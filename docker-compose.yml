@@ -9,6 +9,7 @@ services:
       - POSTGRES_DB=learn-jpa
     ports:
       - 5432:5432
+    command: ["postgres", "-c", "log_statement=all"]
   flyway:
     image: flyway/flyway
     command: -url=jdbc:postgresql://postgres:5432/learn-jpa -user=root -password=magic -connectRetries=60 migrate

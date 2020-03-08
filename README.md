@@ -4,6 +4,10 @@
 ```bash
 docker-compose up -d
 ```
+database logs all queries to console
+```bash
+docker logs -f postgres
+```
 
 ##### Docker tips
 ```bash
