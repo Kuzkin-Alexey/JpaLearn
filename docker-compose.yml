@@ -1,0 +1,18 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=magic
+      - POSTGRES_DB=learn-jpa
+    ports:
+      - 5432:5432
+  flyway:
+    image: flyway/flyway
+    command: -url=jdbc:postgresql://postgres:5432/learn-jpa -user=root -password=magic -connectRetries=60 migrate
+    volumes:
+      - ./src/main/resources/migrations/:/flyway/sql:ro
+    depends_on:
+      - postgres
