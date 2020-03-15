@@ -17,3 +17,17 @@ services:
       - ./src/main/resources/migrations/:/flyway/sql:ro
     depends_on:
       - postgres
+  oracle:
+    image: webdizz/oracle-xe-11g-sa:latest
+    container_name: oracle
+    ports:
+      - "15080:8080"
+      - "1521:1521"
+    environment:
+      - processes=200
+      - DATABASES=sample
+#     Connect as system user and explore HR schema
+#     - username: system
+#     - password: oracle
+#    volumes:
+#      - .oracle_data:/u01/app/oracle
